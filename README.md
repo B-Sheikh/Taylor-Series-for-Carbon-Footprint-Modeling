@@ -1,0 +1,1 @@
+# Taylor-Series-for-Carbon-Footprint-Modeling
