@@ -1,0 +1,7 @@
+Scenario,Total_Emissions_Gt,Reduction_Gt,Reduction_Pct
+Baseline,47.7227,0.0,0.0
+10% reduction - Electricity only,46.1611,1.5616,3.27
+10% reduction - Transport only,46.8828,0.8399,1.76
+10% reduction - Top 3 sectors,44.6718,3.0509,6.39
+20% Electricity + 10% Transport,43.7596,3.9631,8.3
+20% reduction - All sectors,38.1782,9.5445,20.0
