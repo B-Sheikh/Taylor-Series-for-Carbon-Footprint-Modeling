@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator - Carbon Footprint</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                
+
+                <span>Carbon Footprint</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html" class="active">Calculator</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li id="authLinks">
+                    <button id="loginBtn" class="nav-btn">Log In</button>
+                    <button id="signupBtn" class="nav-btn btn-primary">Sign Up</button>
+                </li>
+                <li id="userMenu" class="hidden">
+                    <span id="userName">User</span>
+                    <button id="logoutBtn" class="nav-btn">Log Out</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn">
+
+
+            </button>
+        </div>
+    </nav>
+
+    <div class="container main-container">
+        <!-- Header -->
+        <header class="page-header">
+            <h1>Carbon Footprint Calculator</h1>
+            <p class="page-subtitle">Calculate your monthly emissions using Taylor Series expansion</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <h2>Enter Your Monthly Consumption</h2>
+                <p class="section-desc">Input your consumption values for each category:</p>
+                
+                <form id="carbonForm" class="input-grid">
+                    <div class="input-group">
+                        <label for="electricity">
+                            Electricity Consumption
+                            <span class="unit">(kWh)</span>
+                        </label>
+                        <input type="number" id="electricity" name="electricity" min="0" step="1" value="300" placeholder="e.g., 300">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="fossil_fuel">
+                            Fossil Fuel Usage
+                            <span class="unit">(Liters)</span>
+                        </label>
+                        <input type="number" id="fossil_fuel" name="fossil_fuel" min="0" step="1" value="80" placeholder="e.g., 80">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="natural_gas">
+                            Natural Gas
+                            <span class="unit">(m³)</span>
+                        </label>
+                        <input type="number" id="natural_gas" name="natural_gas" min="0" step="1" value="25" placeholder="e.g., 25">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="transportation">
+                            Transportation Distance
+                            <span class="unit">(km)</span>
+                        </label>
+                        <input type="number" id="transportation" name="transportation" min="0" step="10" value="800" placeholder="e.g., 800">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="industrial">
+                            Industrial/Commercial
+                            <span class="unit">(kg material)</span>
+                        </label>
+                        <input type="number" id="industrial" name="industrial" min="0" step="1" value="50" placeholder="e.g., 50">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="waste">
+                            Waste Generated
+                            <span class="unit">(kg)</span>
+                        </label>
+                        <input type="number" id="waste" name="waste" min="0" step="1" value="40" placeholder="e.g., 40">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="renewable">
+                            Renewable Energy Used
+                            <span class="unit">(kWh)</span>
+                        </label>
+                        <input type="number" id="renewable" name="renewable" min="0" step="1" value="50" placeholder="e.g., 50">
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button type="button" id="calculateBtn" class="btn-primary">
+                        Calculate Carbon Footprint
+                    </button>
+                    <button type="button" id="resetBtn" class="btn-secondary">
+                        Reset
+                    </button>
+                    <button type="button" id="saveBtn" class="btn-secondary hidden">
+                        Save to Dashboard
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <!-- Total Footprint Display -->
+                <div class="total-footprint card gradient-card">
+                    <h2>Your Carbon Footprint</h2>
+                    <div class="footprint-value">
+                        <span id="totalEmissions">0.00</span>
+                        <span class="unit-large">kg CO₂e/month</span>
+                    </div>
+                    <div class="footprint-comparison">
+                        <p id="comparisonText">This is equivalent to driving <span id="kmEquivalent">0</span> km in an average car</p>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="charts-grid">
+                    <!-- Breakdown Chart -->
+                    <div class="chart-container card">
+                        <h3>Emission Breakdown</h3>
+                        <canvas id="breakdownChart"></canvas>
+                    </div>
+
+                    <!-- Sensitivity Chart -->
+                    <div class="chart-container card">
+                        <h3>Sensitivity Analysis</h3>
+                        <p class="chart-desc">Impact of 10% increase in each category</p>
+                        <canvas id="sensitivityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Taylor Series Analysis -->
+                <div class="taylor-analysis card">
+                    <h3>Taylor Series Approximation</h3>
+                    <div class="taylor-grid">
+                        <div class="taylor-card">
+                            <h4>1st Order (Linear)</h4>
+                            <p class="taylor-formula">C(x) ≈ C(x₀) + ∇C·(x-x₀)</p>
+                            <p class="taylor-result" id="taylor1Result">-</p>
+                            <p class="taylor-error" id="taylor1Error">Error: -</p>
+                        </div>
+                        <div class="taylor-card">
+                            <h4>2nd Order (Quadratic)</h4>
+                            <p class="taylor-formula">C(x) ≈ C(x₀) + ∇C·Δx + ½ΔxᵀHΔx</p>
+                            <p class="taylor-result" id="taylor2Result">-</p>
+                            <p class="taylor-error" id="taylor2Error">Error: -</p>
+                        </div>
+                    </div>
+                    <div class="gradient-info">
+                        <h4>Gradient Vector (Marginal Emissions)</h4>
+                        <div id="gradientDisplay" class="gradient-list"></div>
+                    </div>
+                </div>
+
+                <!-- Optimization Recommendations -->
+                <div class="optimization-section card">
+                    <h3>Personalized Optimization Recommendations</h3>
+                    <p class="section-desc">Based on sensitivity analysis and realistic reduction targets:</p>
+                    
+                    <div id="recommendationsList" class="recommendations-list"></div>
+                    
+                    <div class="optimization-summary">
+                        <div class="summary-card">
+                            <h4>Potential Reduction</h4>
+                            <p id="potentialReduction" class="big-number">0</p>
+                            <p class="unit-text">kg CO₂e/month</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Percentage Reduction</h4>
+                            <p id="percentReduction" class="big-number">0%</p>
+                            <p class="unit-text">of current footprint</p>
+                        </div>
+                        <div class="summary-card highlight">
+                            <h4>Optimized Footprint</h4>
+                            <p id="optimizedFootprint" class="big-number">0</p>
+                            <p class="unit-text">kg CO₂e/month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scenario Comparison -->
+                <div class="scenario-section card">
+                    <h3>Scenario Comparison</h3>
+                    <p class="section-desc">Compare different reduction strategies:</p>
+                    <div id="scenarioTable" class="scenario-table"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with Taylor Series Mathematics</p>
+            <p class="formula">C(x) = Σeᵢxᵢ + ½Σaᵢxᵢ² + Σbᵢⱼxᵢxⱼ</p>
+        </footer>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"></button>
+            
+            <div id="loginForm" class="auth-form">
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        
+
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <p>Log in to access your carbon footprint data</p>
+                </div>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="loginEmail" class="with-icon" required placeholder="your@email.com">
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="loginPassword" class="with-icon" required placeholder="••••••••">
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" checked>
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-submit btn-primary">
+                        Log In
+
+                    </button>
+                </form>
+                <p class="form-switch">Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+            </div>
+
+            <div id="signupForm" class="auth-form hidden">
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        
+
+                    </div>
+                    <h2>Create Account</h2>
+                    <p>Start tracking your carbon footprint today</p>
+                </div>
+                <form id="signupFormElement">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="signupName" class="with-icon" required placeholder="John Doe">
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="signupEmail" class="with-icon" required placeholder="your@email.com">
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signupPassword" class="with-icon" required minlength="6" placeholder="••••••••">
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirm">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signupConfirm" class="with-icon" required placeholder="••••••••">
+                            
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit btn-primary">
+                        Create Account
+
+                    </button>
+                </form>
+                <p class="form-switch">Already have an account? <a href="#" id="switchToLogin">Log in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="carbon-calculator.js"></script>
+</body>
+</html>

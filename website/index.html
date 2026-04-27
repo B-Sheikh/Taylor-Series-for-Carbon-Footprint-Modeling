@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint - Carbon Footprint Tracker with Taylor Series</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+
+
+                <span>Carbon Footprint</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li id="authLinks">
+                    <button id="loginBtn" class="nav-btn">Log In</button>
+                    <button id="signupBtn" class="nav-btn btn-primary">Sign Up</button>
+                </li>
+                <li id="userMenu" class="hidden">
+                    <span id="userName">User</span>
+                    <button id="logoutBtn" class="nav-btn">Log Out</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn">
+
+
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Track Your Carbon Footprint with Mathematical Precision</h1>
+            <p class="hero-subtitle">Using Taylor Series Expansion to model, analyze, and optimize your environmental
+                impact</p>
+            <div class="hero-cta">
+                <a href="calculator.html" class="btn-hero btn-primary">
+
+                    Try Calculator
+                </a>
+                <a href="#features" class="btn-hero btn-secondary">Learn More</a>
+            </div>
+
+
+
+        </div>
+        <div class="hero-visual">
+            <div class="formula-card">
+                <h3>The Taylor Series Model</h3>
+                <div class="math-formula">
+                    C(x) = Σeᵢxᵢ + ½Σaᵢxᵢ² + Σbᵢⱼxᵢxⱼ
+                </div>
+                <p>Second-order polynomial approximation for accurate emission modeling</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Smart Calculator</h3>
+                    <p>Calculate your carbon footprint using our Taylor Series-based model with 7 emission categories
+                    </p>
+                    <a href="calculator.html" class="feature-link">Try it
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Track Over Time</h3>
+                    <p>Log your monthly consumption data and visualize your emission trends over time</p>
+                    <a href="dashboard.html" class="feature-link">View Dashboard
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Smart Recommendations</h3>
+                    <p>Get personalized optimization suggestions based on gradient sensitivity analysis</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Taylor Series Analysis</h3>
+                    <p>See 1st and 2nd order Taylor approximations with error bounds and convergence analysis</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Hessian Matrix</h3>
+                    <p>Understand interaction effects between different emission sources mathematically</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+
+
+                    </div>
+                    <h3>Scenario Planning</h3>
+                    <p>Compare different reduction strategies and their potential impact</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Account</h3>
+                    <p>Sign up to save your data and track your progress over time</p>
+                </div>
+                <div class="step-arrow"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Log Your Data</h3>
+                    <p>Enter your monthly consumption values for electricity, transport, waste, and more</p>
+                </div>
+                <div class="step-arrow"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Insights</h3>
+                    <p>Receive detailed analysis with Taylor series approximations and optimization tips</p>
+                </div>
+                <div class="step-arrow"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Reduce Impact</h3>
+                    <p>Follow personalized recommendations to lower your carbon footprint</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Sustainability Journey?</h2>
+            <p>Join thousands of users tracking and reducing their carbon footprint with mathematical precision</p>
+            <button id="ctaSignupBtn" class="btn-cta btn-primary">
+
+                Create Free Account
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+
+
+                        <span>Carbon Footprint</span>
+                    </div>
+                    <p>Mathematical modeling for environmental impact assessment</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="calculator.html">Calculator</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-math">
+                    <h4>Our Model</h4>
+                    <code>C(x) = Σeᵢxᵢ + ½Σaᵢxᵢ² + Σbᵢⱼxᵢxⱼ</code>
+                    <p>Taylor Series Expansion</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"></button>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <div class="auth-header">
+                    <div class="auth-icon">
+
+
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <p>Log in to access your carbon footprint data</p>
+                </div>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="loginEmail" class="with-icon" required placeholder="your@email.com">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="loginPassword" class="with-icon" required placeholder="••••••••">
+
+
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" checked>
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-submit btn-primary">
+
+                        Log In
+                    </button>
+                </form>
+                <p class="form-switch">Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="auth-form hidden">
+                <div class="auth-header">
+                    <div class="auth-icon">
+
+
+                    </div>
+                    <h2>Create Account</h2>
+                    <p>Start tracking your carbon footprint today</p>
+                </div>
+                <form id="signupFormElement">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="signupName" class="with-icon" required placeholder="John Doe">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="signupEmail" class="with-icon" required
+                                placeholder="your@email.com">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signupPassword" class="with-icon" required minlength="6"
+                                placeholder="••••••••">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirm">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signupConfirm" class="with-icon" required placeholder="••••••••">
+
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit btn-primary">
+
+                        Create Account
+                    </button>
+                </form>
+                <p class="form-switch">Already have an account? <a href="#" id="switchToLogin">Log in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>
